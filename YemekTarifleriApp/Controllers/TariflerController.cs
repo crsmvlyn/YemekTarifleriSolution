@@ -48,7 +48,7 @@ namespace YemekTarifleriApp.Controllers
         // GET: Tarifler/Create
         public IActionResult Create()
         {
-            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Id");
+            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Ad");
             return View();
         }
 

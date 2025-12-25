@@ -1,24 +1,41 @@
 ﻿@model YemekTarifleriApp.Models.Kategori
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Kategori Detayı";
 }
 
-<h1>Details</h1>
+<div class="container mt-5 text-center">
+    <h1 class="display-4" style="font-family: 'Pacifico', cursive; color: #d35400;">@Model.Ad</h1>
+    <p class="lead text-muted">Bu kategorideki en özel tarifler.</p>
+    <hr class="my-4">
 
-<div>
-    <h4>Kategori</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ad)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (Model.Tarifler != null && Model.Tarifler.Any())
+    {
+        <div class="row">
+            @foreach (var tarif in Model.Tarifler)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow border-0 hover-card">
+                        <img src="@(string.IsNullOrEmpty(tarif.ResimUrl) ? "https://via.placeholder.com/300?text=Lezzet" : tarif.ResimUrl)"
+                             class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">@tarif.Ad</h5>
+                            <a href="/Tarifler/Details/@tarif.Id" class="btn btn-outline-warning btn-sm stretched-link">Tarife Git</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            Bu kategoride henüz bir tarif yok. İlk tarifi sen ekle! <br>
+            <a href="/Tarifler/Create" class="btn btn-sm btn-dark mt-2">Tarif Ekle</a>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">⬅️ Kategorilere Dön</a>
+    </div>
 </div>

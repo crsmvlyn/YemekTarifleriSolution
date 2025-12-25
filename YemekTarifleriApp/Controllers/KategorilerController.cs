@@ -28,17 +28,13 @@ namespace YemekTarifleriApp.Controllers
         // GET: Kategoriler/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var kategori = await _context.Kategoriler
+                .Include(k => k.Tarifler) // <--- BU SATIR ÇOK ÖNEMLİ!
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (kategori == null)
-            {
-                return NotFound();
-            }
+
+            if (kategori == null) return NotFound();
 
             return View(kategori);
         }
