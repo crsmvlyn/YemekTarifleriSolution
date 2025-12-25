@@ -1,48 +1,51 @@
 ﻿@model YemekTarifleriApp.Models.Tarif
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Tarif Detayı";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-6 bg-light d-flex align-items-center justify-content-center">
+                @if (!string.IsNullOrEmpty(Model.ResimUrl))
+                {
+                    <img src="@Model.ResimUrl" class="img-fluid w-100 h-100" style="object-fit: cover; min-height: 400px;" alt="@Model.Ad">
+                }
+                else
+                {
+                    <div class="text-center p-5 text-muted">
+                        <span class="display-1">🍲</span>
+                        <p>Resim Yok</p>
+                    </div>
+                }
+            </div>
 
-<div>
-    <h4>Tarif</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Malzemeler)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Malzemeler)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Yapilis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Yapilis)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ResimUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResimUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Kategori)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kategori.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            <div class="col-md-6">
+                <div class="card-body p-4 p-md-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-warning text-dark fs-6 px-3 py-2">📂 @(Model.Kategori?.Ad ?? "Kategori Yok")</span>
+
+                    </div>
+
+                    <h1 class="display-5 fw-bold mb-4" style="font-family: 'Pacifico', cursive; color: #d35400;">@Model.Ad</h1>
+
+                    <div class="mb-4">
+                        <h5 class="fw-bold text-dark border-bottom pb-2">🛒 Malzemeler</h5>
+                        <p class="fs-5 text-secondary" style="white-space: pre-line;">@Model.Malzemeler</p>
+                    </div>
+
+                    <div class="mb-5">
+                        <h5 class="fw-bold text-dark border-bottom pb-2">👩‍🍳 Yapılışı</h5>
+                        <p class="fs-5" style="white-space: pre-line; line-height: 1.6;">@Model.Yapilis</p>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary flex-grow-1">✏️ Düzenle</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary">⬅️ Listeye Dön</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

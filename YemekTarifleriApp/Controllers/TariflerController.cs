@@ -65,7 +65,7 @@ namespace YemekTarifleriApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Id", tarif.KategoriId);
+            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Ad", tarif.KategoriId);
             return View(tarif);
         }
 
@@ -82,7 +82,7 @@ namespace YemekTarifleriApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Id", tarif.KategoriId);
+            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Ad", tarif.KategoriId);
             return View(tarif);
         }
 
@@ -118,7 +118,7 @@ namespace YemekTarifleriApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Id", tarif.KategoriId);
+            ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "Id", "Ad", tarif.KategoriId);
             return View(tarif);
         }
 
