@@ -1,0 +1,16 @@
+﻿# Altyapı olarak .NET 8 SDK kullan
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+WORKDIR /app
+
+# Proje dosyalarını kopyala
+COPY . ./
+
+# Projeyi derle (Restore ve Publish)
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
+
+# Çalıştırma aşaması (Runtime)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "YemekTarifleriApp.dll"]
