@@ -1,0 +1,47 @@
+﻿@model IEnumerable<YemekTarifleriApp.Models.Tarif>
+
+@{
+    ViewData["Title"] = "Tarifler";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>🍴 Yemek Tarifleri</h1>
+        <a asp-action="Create" class="btn btn-success">➕ Yeni Tarif Ekle</a>
+    </div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(item.ResimUrl))
+                    {
+                        <img src="@item.ResimUrl" class="card-img-top" alt="@item.Ad" style="height: 200px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/300x200?text=Resim+Yok" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Ad</h5>
+                        <p class="card-text text-muted">
+                            <small>📂 @(item.Kategori?.Ad ?? "Kategorisiz")</small>
+                        </p>
+                        <p class="card-text">
+                            @(item.Malzemeler?.Length > 50 ? item.Malzemeler.Substring(0, 50) + "..." : item.Malzemeler)
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm">Düzenle</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">Detay</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

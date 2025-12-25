@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html, body {
+    /* Hafif krem rengi arkaplan */
+    background-color: #FFF8E7;
+    /* "Poppins" okunabilir, "Pacifico" baþlýklar için */
+    font-family: 'Poppins', sans-serif;
+    color: #5a5a5a;
+}
+
+/* Baþlýklarý daha sevimli yapalým */
+h1, h2, .navbar-brand {
+    font-family: 'Pacifico', cursive;
+    color: #d35400; /* Kiremit rengi */
+}
+
+/* Linklerin altýndaki çizgiyi kaldýralým */
+a {
+    text-decoration: none;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
