@@ -1,15 +1,15 @@
-﻿# Altyapı olarak .NET 8 SDK kullan
+﻿# Altyapı
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
 
-# Proje dosyalarını kopyala
+# Tüm dosyaları kopyala
 COPY . ./
 
-# Projeyi derle (Restore ve Publish)
+# Projeyi derle (Dosya yolu değiştiği için klasör adını ekledik)
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+RUN dotnet publish YemekTarifleriApp/YemekTarifleriApp.csproj -c Release -o out
 
-# Çalıştırma aşaması (Runtime)
+# Çalıştırma
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
