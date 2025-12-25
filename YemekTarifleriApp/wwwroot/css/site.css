@@ -11,11 +11,26 @@ html {
 }
 
 html, body {
-    /* Hafif krem rengi arkaplan */
-    background-color: #FFF8E7;
-    /* "Poppins" okunabilir, "Pacifico" baþlýklar için */
+    /* Paris Manzarasý - Tüm sayfalarda sabit */
+    background-image: url('https://images.bauerhosting.com/legacy/empire-tmdb/films/2062/images/sFpGI08aeHIRKlLi9SxLyYrRyZ8.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Sayfa kayarken resim sabit kalýr */
+    background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
     color: #5a5a5a;
+    min-height: 100vh; /* Sayfa boyu yetmese bile arkaplan dolsun */
+}
+
+/* Sayfa içeriði çok kenara yapýþmasýn, mobilde rahat okunsun */
+.container {
+    /* Bu genel ayar. Ama Home/Index sayfasýnda bunu eziyoruz (override) */
+    background-color: rgba(255, 255, 255, 0.90);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 /* Baþlýklarý daha sevimli yapalým */
