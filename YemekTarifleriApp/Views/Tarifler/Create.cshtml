@@ -1,52 +1,62 @@
 ﻿@model YemekTarifleriApp.Models.Tarif
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Yeni Tarif Ekle";
 }
 
-<h1>Create</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 
-<h4>Tarif</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Ad" class="control-label"></label>
-                <input asp-for="Ad" class="form-control" />
-                <span asp-validation-for="Ad" class="text-danger"></span>
+            <div class="glass-box w-100 text-start">
+
+                <h2 class="text-center mb-4" style="font-family: 'Pacifico', cursive; color: #d35400;">🍳 Yeni Tarif Ekle</h2>
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Ad" class="control-label fw-bold">Tarif Adı</label>
+                        <input asp-for="Ad" class="form-control" placeholder="Örn: Karnıyarık" />
+                        <span asp-validation-for="Ad" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Malzemeler" class="control-label fw-bold">Malzemeler</label>
+                        <textarea asp-for="Malzemeler" class="form-control" rows="3" placeholder="Örn: 3 patlıcan, 200g kıyma..."></textarea>
+                        <span asp-validation-for="Malzemeler" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Yapilis" class="control-label fw-bold">Yapılış</label>
+                        <textarea asp-for="Yapilis" class="form-control" rows="5" placeholder="Adım adım tarifi anlat..."></textarea>
+                        <span asp-validation-for="Yapilis" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ResimUrl" class="control-label fw-bold">Resim Linki (URL)</label>
+                        <input asp-for="ResimUrl" class="form-control" placeholder="https://..." />
+                        <span asp-validation-for="ResimUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="KategoriId" class="control-label fw-bold">Kategori</label>
+                        <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId"></select>
+                    </div>
+
+                    <div class="form-group text-center d-grid gap-2">
+                        <input type="submit" value="Kaydet ve Yayınla" class="btn btn-success btn-lg" />
+                        <a asp-action="Index" class="btn btn-outline-secondary">İptal</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Malzemeler" class="control-label"></label>
-                <input asp-for="Malzemeler" class="form-control" />
-                <span asp-validation-for="Malzemeler" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Yapilis" class="control-label"></label>
-                <input asp-for="Yapilis" class="form-control" />
-                <span asp-validation-for="Yapilis" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ResimUrl" class="control-label"></label>
-                <input asp-for="ResimUrl" class="form-control" />
-                <span asp-validation-for="ResimUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Kategori" class="control-label"></label>
-                <select asp-for="Kategori" class="form-control" asp-items="ViewBag.Kategori"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

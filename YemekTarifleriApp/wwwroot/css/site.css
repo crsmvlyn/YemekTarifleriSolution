@@ -22,15 +22,24 @@ html, body {
     min-height: 100vh; /* Sayfa boyu yetmese bile arkaplan dolsun */
 }
 
-/* Sayfa içeriði çok kenara yapýþmasýn, mobilde rahat okunsun */
+/* Container ARTIK ÞEFFAF */
 .container {
-    /* Bu genel ayar. Ama Home/Index sayfasýnda bunu eziyoruz (override) */
-    background-color: rgba(255, 255, 255, 0.90);
-    border-radius: 15px;
-    padding: 20px;
+    background-color: transparent !important; /* Arkasý þeffaf */
+    box-shadow: none !important; /* Gölge yok */
+    /* Kenar boþluklarý kalsýn */
     margin-top: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Yeni "Cam Kutu" Stili (Baþlýklarýn arkasýna koyacaðýz) */
+.glass-box {
+    background-color: rgba(255, 255, 255, 0.6); /* %60 beyazlýk */
+    backdrop-filter: blur(12px); /* Arkasýný bulanýklaþtýrýr */
+    border-radius: 20px; /* Yuvarlak köþeler */
+    padding: 30px;
+    display: inline-block; /* Sadece yazý kadar yer kaplasýn (veya blok olabilir) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Hafif gölge */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Ýnce beyaz çerçeve */
 }
 
 /* Baþlýklarý daha sevimli yapalým */
